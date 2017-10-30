@@ -17,18 +17,15 @@ class App extends React.Component {
   }
   handleChangeFilterType = (type) => {
     this.setState({
-      filters: Object.assign({}, this.state.filters, {
-        type: type,
-      })
+      filters: Object.assign({}, this.state.filters, {type: type})
     })
   }
 
-  getThePets = () => {
+  fetchPets = () => {
     let url = '/api/pets';
     if(this.state.filters.type != 'all') {
       url += `?type=${this.state.filters.type}`
     }
-
     fetch(url)
       .then(res => res.json())
       .then(pets => this.setState({pets}));
@@ -52,9 +49,8 @@ class App extends React.Component {
               <Filters
                 filters={this.state.filters}
                 onChangeType={this.handleChangeFilterType}
-                onFindPetsClick={this.getThePets}
+                onFindPetsClick={this.fetchPets}
                 />
-
             </div>
             <div className="twelve wide column">
               <PetBrowser
