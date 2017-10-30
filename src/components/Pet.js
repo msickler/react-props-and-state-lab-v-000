@@ -21,7 +21,7 @@ class Pet extends React.Component {
     return (
       <div className="card">
         <div className="content">
-          <a className="header">{this.props.pet.name} (gender: ♂ or ♀)</a>
+          <a className="header">{this.props.pet.name} ({(this.props.pet.gender === 'male') ? '♂' : '♀'}: ♂ or ♀)</a>
           <div className="meta">
             <span className="date">Pet type</span>
           </div>
