@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Filters from './Filters';
 import PetBrowser from './PetBrowser';
 
@@ -15,30 +14,30 @@ class App extends React.Component {
       }
     };
   }
-  handleChangeFilterType = (type) => {
+
+  handleChangeFilter = (type) => {
     this.setState({
-      filters: Object.assign({}, this.state.filters, {
-        type: type,
-      })
+      filters: Object.assign({}, this.state.filters, {type: type})
     })
   }
 
-  getThePets = () => {
-    let url = '/api/pets';
-    if(this.state.filters.type != 'all') {
+  fetchPets = () => {
+    const url = '/api/pets'
+    if (this.state.filters.type !== 'all') {
       url += `?type=${this.state.filters.type}`
     }
-
     fetch(url)
-      .then(res => res.json())
-      .then(pets => this.setState({pets}));
+    .then(res => res.json())
+    .then(pets => this.setState({pets}))
   }
 
-  handleAdoptPet = petId => {
-   this.setState({
-     adoptedPets: [...this.state.adoptedPets, petId],
-   });
- }
+  handleAdoptPet = () => {
+    this.setState({
+      adoptedPets: [...this.state.adoptedPets, PetId]
+    })
+  }
+
+
 
   render() {
     return (
@@ -49,19 +48,10 @@ class App extends React.Component {
         <div className="ui container">
           <div className="ui grid">
             <div className="four wide column">
-              <Filters
-                filters={this.state.filters}
-                onChangeType={this.handleChangeFilterType}
-                onFindPetsClick={this.getThePets}
-                />
-
+              <Filters filters={this.state.filters} onChangeType={this.handleChangeFilter} onFindPetsClick={this.fetchPets}/>
             </div>
             <div className="twelve wide column">
-              <PetBrowser
-                pets={this.state.pets}
-                adoptedPets={this.state.adoptedPets}
-                onAdoptPet={this.handleAdoptPet}
-                />
+              <PetBrowser pets={this.state.pets} adoptedPets={this.state.adoptedPets} onAdoptPet={this.handleAdoptPet}/>
             </div>
           </div>
         </div>
