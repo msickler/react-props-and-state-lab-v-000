@@ -14,7 +14,7 @@ class App extends React.Component {
       }
     };
   }
-  
+
   handleChangeFilterType = (type) => {
     this.setState({
       filters: Object.assign({}, this.state.filters, {type: type})
