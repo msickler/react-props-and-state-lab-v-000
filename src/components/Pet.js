@@ -1,8 +1,16 @@
 import React from 'react';
 
 class Pet extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: props.name,
+      type: props.type,
+      age: props.age,
+      weight: props.weight,
+      gender: props.gender,
+      isAdopted; props.isAdopted
+    }
   }
 
   render() {
