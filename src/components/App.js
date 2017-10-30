@@ -31,13 +31,13 @@ class App extends React.Component {
     .then(pets => this.setState({pets}))
   }
 
-  handle adoptPet = () => {
+  handleAdoptPet = () => {
     this.setState({
       adoptedPets: [...this.state.adoptedPets, PetId]
     })
   }
 
-  
+
 
   render() {
     return (
@@ -48,10 +48,10 @@ class App extends React.Component {
         <div className="ui container">
           <div className="ui grid">
             <div className="four wide column">
-              <Filters />
+              <Filters filters={this.state.filters} onChangeType={this.handleChangeFilter} onFindPetsClick={this.fetchPets}/>
             </div>
             <div className="twelve wide column">
-              <PetBrowser />
+              <PetBrowser pets={this.state.pets} adoptedPets={this.state.adoptedPets} onAdoptPet={this.handleAdoptPet}/>
             </div>
           </div>
         </div>
