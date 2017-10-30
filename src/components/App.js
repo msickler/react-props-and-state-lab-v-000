@@ -6,7 +6,6 @@ import PetBrowser from './PetBrowser';
 class App extends React.Component {
   constructor() {
     super();
-
     this.state = {
       pets: [],
       adoptedPets: [],
@@ -15,6 +14,7 @@ class App extends React.Component {
       }
     };
   }
+  
   handleChangeFilterType = (type) => {
     this.setState({
       filters: Object.assign({}, this.state.filters, {type: type})
