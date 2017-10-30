@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Filters from './Filters';
 import PetBrowser from './PetBrowser';
 
@@ -15,6 +14,30 @@ class App extends React.Component {
       }
     };
   }
+
+  handleChangeFilter = (type) => {
+    this.setState({
+      filters: Object.assign({}, this.state.filters, {type: type})
+    })
+  }
+
+  fetchPets = () => {
+    const url = '/api/pets'
+    if (this.state.filters.type !== 'all') {
+      url += `?type=${this.state.filters.type}`
+    }
+    fetch(url)
+    .then(res => res.json())
+    .then(pets => this.setState({pets}))
+  }
+
+  handle adoptPet = () => {
+    this.setState({
+      adoptedPets: [...this.state.adoptedPets, PetId]
+    })
+  }
+
+  
 
   render() {
     return (
