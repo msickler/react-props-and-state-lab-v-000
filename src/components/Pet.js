@@ -13,6 +13,10 @@ class Pet extends React.Component {
     }
   }
 
+  onAdoptPet = event => {
+    this.props.onAdoptPet(this.props.pet.id)
+  }
+
   render() {
     return (
       <div className="card">
