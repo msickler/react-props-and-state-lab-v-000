@@ -9,7 +9,7 @@ class Pet extends React.Component {
       age: props.age,
       weight: props.weight,
       gender: props.gender,
-      isAdopted; props.isAdopted
+      isAdopted: props.isAdopted
     }
   }
 
@@ -21,7 +21,7 @@ class Pet extends React.Component {
     return (
       <div className="card">
         <div className="content">
-          <a className="header">Pet name (gender: ♂ or ♀)</a>
+          <a className="header">{this.props.pet.name} (gender: ♂ or ♀)</a>
           <div className="meta">
             <span className="date">Pet type</span>
           </div>
